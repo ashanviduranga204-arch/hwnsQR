@@ -206,7 +206,16 @@ function applyLang(){document.documentElement.lang=lang;document.querySelectorAl
 function tgLang(){lang=lang==="en"?"si":"en";sv("rnc-lang",lang);applyLang();render()}
 function tgTheme(){const d=document.documentElement,cur=d.dataset.theme||(matchMedia("(prefers-color-scheme:dark)").matches?"dark":"light"),n=cur==="dark"?"light":"dark";d.dataset.theme=n;sv("rnc-th",n)}
 let bdone=0;function tab(v){if((v==="dash"||v==="qr")&&!UNL)return openLock(v);if(v==="qr"&&!bdone){bdone=1;badges()}["dash","scan","qr"].forEach(x=>{$("v-"+x).classList.toggle("hidden",x!==v);$("t-"+x).classList.toggle("on",x===v)});if(v!=="scan")stopCam();else startCam(1)}
-function startCam(auto){if(qr)return;try{qr=new Html5Qrcode("qr-reader");qr.start({facingMode:"environment"},{fps:10,qrbox:220},x=>{if(Date.now()-last>3000){last=Date.now();scan(x.replace(/^(RNC|HWNS)\|/,""))}},()=>{}).then(()=>{$("ph").classList.add("hidden");$("b1").classList.add("hidden");$("b2").classList.remove("hidden")}).catch(()=>{qr=null;if(!auto)toast(t("tCam"),"bad")})}catch(e){qr=null;if(!auto)toast(t("tCam"),"bad")}}
+function startCam(auto){if(qr)return;
+ try{const h=new Html5Qrcode("qr-reader");qr=h;const cfg={fps:10,qrbox:220};
+  const ok=x=>{if(Date.now()-last>3000){last=Date.now();scan(x.replace(/^(RNC|HWNS)\|/,""))}};
+  const on=()=>{$("ph").classList.add("hidden");$("b1").classList.add("hidden");$("b2").classList.remove("hidden")};
+  const fail=()=>{qr=null;if(!auto)toast(t("tCam"),"bad")};
+  /* phone: rear camera -> laptop: front/webcam -> any available camera */
+  h.start({facingMode:"environment"},cfg,ok,()=>{}).then(on).catch(()=>
+   h.start({facingMode:"user"},cfg,ok,()=>{}).then(on).catch(()=>
+    Html5Qrcode.getCameras().then(c=>{if(!c||!c.length)throw 0;return h.start(c[0].id,cfg,ok,()=>{})}).then(on).catch(fail)))
+ }catch(e){qr=null;if(!auto)toast(t("tCam"),"bad")}}
 function stopCam(){const q=qr;qr=null;$("ph").classList.remove("hidden");$("b1").classList.remove("hidden");$("b2").classList.add("hidden");if(q)q.stop().then(()=>q.clear()).catch(()=>{})}
 function badges(){$("badges").innerHTML="";S.R.forEach(r=>{const d=document.createElement("div");d.className="badge";d.innerHTML=`<div class="text-[11px] font-bold tracking-wide">H/WARAPITTIYA NATIONAL SCHOOL</div><div class="text-xl font-extrabold my-1">${r.id}</div><div class="flex justify-center"></div><div class="text-[10px] mt-1">Scan to check in / out · ස්කෑන් කරන්න</div>`;$("badges").appendChild(d);if(window.QRCode)new QRCode(d.children[2],{text:"HWNS|"+r.id,width:480,height:480})})}
 function pr(m){if(m==="qr"||m==="qr1")tab("qr");document.body.dataset.print=m;window.print()}
