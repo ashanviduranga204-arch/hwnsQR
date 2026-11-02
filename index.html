@@ -27,32 +27,11 @@ body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset
 .pulse{animation:pr 1.6s infinite}@keyframes pr{0%{box-shadow:0 0 0 0 rgba(225,29,72,.5)}100%{box-shadow:0 0 0 10px rgba(225,29,72,0)}}
 .toast{background:var(--card);color:var(--tx);border:1px solid var(--bd);border-radius:10px;padding:.65rem .85rem;font-size:.8rem;font-weight:600;box-shadow:0 8px 24px rgba(0,0,0,.25);pointer-events:auto}
 .fi{border-left:4px solid;border-radius:8px;background:var(--in);padding:.5rem .65rem}
-.badge{
-  background:#fff;
-  color:#111;
-  border:2px solid #111;
-  border-radius:14px;
-  padding:.5rem;
-  text-align:center;
-  break-inside:avoid;
-  display:flex;
-  flex-direction:column;
-  align-items:center;
-  justify-content:center;
-}
-.badge > div:nth-child(2){
-  font-size:0.9rem !important; 
-  font-weight:800;
-  margin:4px 0 !important;
-  word-break:break-word;
-}
-.badge img,.badge canvas{
-  max-width:120px !important;
-  height:auto !important;
-}
+.badge{background:#fff;color:#111;border:2px solid #111;border-radius:14px;padding:.9rem;text-align:center;break-inside:avoid}
+.badge img,.badge canvas{max-width:150px;height:auto}.badge>div:nth-child(2){line-height:1.2}
 th,td{padding:.55rem .6rem;text-align:left;white-space:nowrap}th{font-size:.68rem;text-transform:uppercase;color:var(--mu)}tr+tr td{border-top:1px solid var(--bd)}
 @page{size:A4;margin:10mm}
-@media print{.hd,#toasts,.np{display:none!important}body{background:#fff!important;color:#000}body[data-print=log] .dsec:not(#logsec){display:none}body[data-print=qr] #v-dash,body[data-print=qr] #v-scan,body[data-print=qr1] #v-dash,body[data-print=qr1] #v-scan{display:none}body[data-print=qr1] #badges{display:block!important}body[data-print=qr1] .badge{break-after:page;page-break-after:always;height:255mm;display:flex;flex-direction:column;align-items:center;justify-content:center;border-width:3px;margin:0}body[data-print=qr1] .badge:last-child{break-after:auto;page-break-after:auto}body[data-print=qr1] .badge>div:nth-child(1){font-size:20pt!important}body[data-print=qr1] .badge>div:nth-child(2){font-size:60pt!important;margin:8mm 0!important}body[data-print=qr1] .badge>div:nth-child(4){font-size:18pt!important;margin-top:8mm!important}body[data-print=qr1] .badge img,body[data-print=qr1] .badge canvas{width:13cm!important;height:13cm!important;max-width:none!important}.card{border-color:#999}}
+@media print{.hd,#toasts,.np{display:none!important}body{background:#fff!important;color:#000}body[data-print=log] .dsec:not(#logsec){display:none}body[data-print=qr] #v-dash,body[data-print=qr] #v-scan,body[data-print=qr1] #v-dash,body[data-print=qr1] #v-scan{display:none}body[data-print=qr1] #badges{display:block!important}body[data-print=qr1] .badge{break-after:page;page-break-after:always;height:255mm;display:flex;flex-direction:column;align-items:center;justify-content:center;border-width:3px;margin:0}body[data-print=qr1] .badge:last-child{break-after:auto;page-break-after:auto}body[data-print=qr1] .badge>div:nth-child(1){font-size:20pt!important}body[data-print=qr1] .badge>div:nth-child(2){font-size:60pt!important;line-height:1.1!important;margin:8mm 0!important}body[data-print=qr1] .badge>div.long{font-size:44pt!important}body[data-print=qr1] .badge>div:nth-child(4){font-size:18pt!important;margin-top:8mm!important}body[data-print=qr1] .badge img,body[data-print=qr1] .badge canvas{width:13cm!important;height:13cm!important;max-width:none!important}.card{border-color:#999}}
 </style><link rel="manifest" href="manifest.webmanifest">
 <meta name="theme-color" content="#0f172a">
 <meta name="mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-capable" content="yes">
@@ -144,7 +123,7 @@ const t=(k,o)=>{let s=L[lang][k]||L.en[k]||k;for(const x in o||{})s=s.replace("{
 const TE=[{n:"ඒ.ඩබ්.ඒ.වී.එස් ප්‍රියංකර මයා",s:"",i:""},{n:"වයි.ජී.ඒ.නිශාන්ති මිය",s:"",i:""},{n:"වී. එල්. එස්. ප්‍රියංකර මයා",s:"",i:""},{n:"එච්.ඩබ්.ඩී.යූ.අබේවර්ධන මයා",s:"",i:""},{n:"එම්. එම්. ඒ. ටී. එස්. කුමාර මයා",s:"",i:""},{n:"ඒ. කේ. එන්. තරංගනී මිය",s:"",i:""},{n:"ඒ.කේ. ජී. ඩී. ලක්ෂණී මිය",s:"",i:""},{n:"එම්.එස්. කුමාර මයා",s:"",i:""},{n:"එම්. ඒ. එස්. ගුණසේකර මිය",s:"",i:""},{n:"එම්.පී.පී.ආර්.කුමාර මයා",s:"",i:""},{n:"පී.බී.ගුණසිංහ මිය",s:"",i:""},{n:"එම්. තිලකරත්න මයා",s:"",i:""},{n:"එච්.පී. එච්.අයි. විමලසේන මිය",s:"",i:""},{n:"එච්. ජී. එන්. ඩී. දේශප්‍රිය මිය",s:"",i:""},{n:"ඩබ්. එම්. එස්. එස්. විජේමුණි මයා",s:"",i:""},{n:"ඩී. එස්. සරඹගේ මිය",s:"",i:""},{n:"ඩබ්.පී.එච්.මධුෂිකා මිය",s:"",i:""},{n:"ආර්.එම්.එන්.ප්‍රියදර්ශනී මිය",s:"",i:""},{n:"ඒ.එල්.ඩබ්.ටී.ලියනගේ මිය",s:"",i:""},{n:"ඩී.එන්.එම්. ගුණතිලක මිය",s:"",i:""},{n:"අයි.ඊ.ආර්.එදිරිසිංහ මෙය",s:"",i:""},{n:"ජී.එන්.චාමර මයා",s:"",i:""},{n:"ඩබ්.නුවන් සමීර මයා",s:"",i:""},{n:"එච්.එන්.අනෝජා මිය",s:"",i:""},{n:"එච්.එච්.චම්පා ශ්‍රියානි මිය",s:"",i:""},{n:"වී.ජී.පියසේන මයා",s:"",i:""},{n:"එල්.කේ.පී.සංජීවන මයා",s:"",i:""},{n:"එච්. ජී. එස්. පද්මකුමාරි මිය",s:"",i:""},{n:"ආර්.එම්.ඒකනායක මයා",s:"",i:""},{n:"ඩී.ඩබ්.මධුරංග මයා",s:"",i:""},{n:"ඒ.ඩබ්.වී. හාෂිණී මෙය",s:"",i:""},{n:"කේ.ඩී.ඒ.විරාජනී මෙය",s:"",i:""},{n:"ඩී.ඩී.එන්.රත්නායක මයා",s:"",i:""},{n:"ඩබ්.ඩබ්.කේ.එම්.සෙව්වන්දි මෙය",s:"",i:""},{n:"එච්.ඒ.වී.එස්.හර්ෂන් මයා",s:"",i:""},{n:"ඩබ්.ඒ.නිෂාදි මිය",s:"",i:""}];
 const sj=n=>{const e=TE.find(x=>x.n===n);return e&&(e.s||e.i)?(lang==="si"?e.i:e.s):"—"};
 const hm=ms=>new Date(ms).toLocaleTimeString([],{hour:"2-digit",minute:"2-digit"});
-const mins=r=>(nm()<470 || nm()>=810?0:Math.max(0,Math.floor((Date.now()-r.vs)/6e4)));
+const mins=r=>Math.max(0,Math.floor((Date.now()-r.vs)/6e4));
 const PR=[[470,510],[510,550],[550,590],[590,630],[650,690],[690,730],[730,770],[770,810]];
 const nm=()=>{const d=new Date();return d.getHours()*60+d.getMinutes()+d.getSeconds()/60};
 const atM=m=>{const d=new Date();d.setHours(0,0,0,0);return d.getTime()+m*6e4};
@@ -227,9 +206,18 @@ function applyLang(){document.documentElement.lang=lang;document.querySelectorAl
 function tgLang(){lang=lang==="en"?"si":"en";sv("rnc-lang",lang);applyLang();render()}
 function tgTheme(){const d=document.documentElement,cur=d.dataset.theme||(matchMedia("(prefers-color-scheme:dark)").matches?"dark":"light"),n=cur==="dark"?"light":"dark";d.dataset.theme=n;sv("rnc-th",n)}
 let bdone=0;function tab(v){if((v==="dash"||v==="qr")&&!UNL)return openLock(v);if(v==="qr"&&!bdone){bdone=1;badges()}["dash","scan","qr"].forEach(x=>{$("v-"+x).classList.toggle("hidden",x!==v);$("t-"+x).classList.toggle("on",x===v)});if(v!=="scan")stopCam();else startCam(1)}
-function startCam(auto){if(qr)return;try{qr=new Html5Qrcode("qr-reader");qr.start({facingMode:"environment"},{fps:10,qrbox:220},x=>{if(Date.now()-last>3000){last=Date.now();scan(x.replace(/^(RNC|HWNS)\|/,""))}},()=>{}).then(()=>{$("ph").classList.add("hidden");$("b1").classList.add("hidden");$("b2").classList.remove("hidden")}).catch(()=>{qr=null;if(!auto)toast(t("tCam"),"bad")})}catch(e){qr=null;if(!auto)toast(t("tCam"),"bad")}}
+function startCam(auto){if(qr)return;
+ try{const h=new Html5Qrcode("qr-reader");qr=h;const cfg={fps:10,qrbox:220};
+  const ok=x=>{if(Date.now()-last>3000){last=Date.now();scan(x.replace(/^(RNC|HWNS)\|/,""))}};
+  const on=()=>{$("ph").classList.add("hidden");$("b1").classList.add("hidden");$("b2").classList.remove("hidden")};
+  const fail=()=>{qr=null;if(!auto)toast(t("tCam"),"bad")};
+  /* phone: rear camera -> laptop: front/webcam -> any available camera */
+  h.start({facingMode:"environment"},cfg,ok,()=>{}).then(on).catch(()=>
+   h.start({facingMode:"user"},cfg,ok,()=>{}).then(on).catch(()=>
+    Html5Qrcode.getCameras().then(c=>{if(!c||!c.length)throw 0;return h.start(c[0].id,cfg,ok,()=>{})}).then(on).catch(fail)))
+ }catch(e){qr=null;if(!auto)toast(t("tCam"),"bad")}}
 function stopCam(){const q=qr;qr=null;$("ph").classList.remove("hidden");$("b1").classList.remove("hidden");$("b2").classList.add("hidden");if(q)q.stop().then(()=>q.clear()).catch(()=>{})}
-function badges(){$("badges").innerHTML="";S.R.forEach(r=>{const d=document.createElement("div");d.className="badge";d.innerHTML=`<div class="text-[11px] font-bold tracking-wide">H/WARAPITTIYA NATIONAL SCHOOL</div><div class="text-xl font-extrabold my-1">${r.id}</div><div class="flex justify-center"></div><div class="text-[10px] mt-1">Scan to check in / out · ස්කෑන් කරන්න</div>`;$("badges").appendChild(d);if(window.QRCode)new QRCode(d.children[2],{text:"HWNS|"+r.id,width:480,height:480})})}
+function badges(){$("badges").innerHTML="";S.R.forEach(r=>{const d=document.createElement("div");d.className="badge";d.innerHTML=`<div class="text-[11px] font-bold tracking-wide">H/WARAPITTIYA NATIONAL SCHOOL</div><div class="text-xl font-extrabold my-1${r.id.length>12?' long':''}">${r.id}</div><div class="flex justify-center"></div><div class="text-[10px] mt-1">Scan to check in / out · ස්කෑන් කරන්න</div>`;$("badges").appendChild(d);if(window.QRCode)new QRCode(d.children[2],{text:"HWNS|"+r.id,width:480,height:480})})}
 function pr(m){if(m==="qr"||m==="qr1")tab("qr");document.body.dataset.print=m;window.print()}
 window.onafterprint=()=>delete document.body.dataset.print;
 function resetDemo(){const p=S.ph;S=seed();if(p)S.ph=p;HL=[];hv="";save();render()}
