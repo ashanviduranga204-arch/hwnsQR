@@ -27,8 +27,25 @@ body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset
 .pulse{animation:pr 1.6s infinite}@keyframes pr{0%{box-shadow:0 0 0 0 rgba(225,29,72,.5)}100%{box-shadow:0 0 0 10px rgba(225,29,72,0)}}
 .toast{background:var(--card);color:var(--tx);border:1px solid var(--bd);border-radius:10px;padding:.65rem .85rem;font-size:.8rem;font-weight:600;box-shadow:0 8px 24px rgba(0,0,0,.25);pointer-events:auto}
 .fi{border-left:4px solid;border-radius:8px;background:var(--in);padding:.5rem .65rem}
-.badge{background:#fff;color:#111;border:2px solid #111;border-radius:14px;padding:.9rem;text-align:center;break-inside:avoid}
-.badge img,.badge canvas{max-width:150px;height:auto}
+.badge {
+  background: #fff;
+  color: #111;
+  border: 2px solid #111;
+  border-radius: 14px;
+  padding: 0.8rem;
+  text-align: center;
+  break-inside: avoid;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+}
+.badge > div:nth-child(2) {
+  font-size: 1.1rem;
+  font-weight: 800;
+  margin: 6px 0;
+  word-break: break-word;
+}
 th,td{padding:.55rem .6rem;text-align:left;white-space:nowrap}th{font-size:.68rem;text-transform:uppercase;color:var(--mu)}tr+tr td{border-top:1px solid var(--bd)}
 @page{size:A4;margin:10mm}
 @media print{.hd,#toasts,.np{display:none!important}body{background:#fff!important;color:#000}body[data-print=log] .dsec:not(#logsec){display:none}body[data-print=qr] #v-dash,body[data-print=qr] #v-scan,body[data-print=qr1] #v-dash,body[data-print=qr1] #v-scan{display:none}body[data-print=qr1] #badges{display:block!important}body[data-print=qr1] .badge{break-after:page;page-break-after:always;height:255mm;display:flex;flex-direction:column;align-items:center;justify-content:center;border-width:3px;margin:0}body[data-print=qr1] .badge:last-child{break-after:auto;page-break-after:auto}body[data-print=qr1] .badge>div:nth-child(1){font-size:20pt!important}body[data-print=qr1] .badge>div:nth-child(2){font-size:60pt!important;margin:8mm 0!important}body[data-print=qr1] .badge>div:nth-child(4){font-size:18pt!important;margin-top:8mm!important}body[data-print=qr1] .badge img,body[data-print=qr1] .badge canvas{width:13cm!important;height:13cm!important;max-width:none!important}.card{border-color:#999}}
