@@ -101,7 +101,7 @@ window.claude={use:async n=>{if(n!=="db")return null;await new Promise(r=>{const
 <section id="v-scan" class="hidden max-w-xl mx-auto"><div class="card space-y-4">
  <div class="text-center"><div class="text-4xl">📷</div><h2 class="font-extrabold text-lg" data-i18n="sHead"></h2><p class="text-xs mu" data-i18n="sSub"></p></div><div id="pb2" class="text-sm font-bold rounded-lg px-3 py-2 text-center" style="background:var(--in)"></div><div id="ra" class="hidden rounded-xl p-3 text-sm font-bold" style="background:var(--wab);border:2px solid var(--wa);color:var(--tx)"><div id="rat"></div><button class="btn mt-2 w-full" onclick="ackRel()" data-i18n="relOk"></button></div>
  <div><label class="text-xs font-semibold mu" data-i18n="lblT"></label><select id="ts" class="inp mt-1" onchange="sv('rnc-t',this.value);render()"></select><div id="me" class="text-xs font-bold mt-2" style="color:var(--ok)"></div></div>
- <div><label class="text-xs font-semibold mu" data-i18n="lblC"></label><input id="sc" type="number" min="0" max="999" inputmode="numeric" class="inp mt-1" placeholder="32"></div>
+ <div><label class="text-xs font-semibold mu" data-i18n="lblC"></label><input id="sc" type="number" min="0" max="999" inputmode="numeric" class="inp mt-1"></div>
  <div class="rounded-xl overflow-hidden text-center" style="background:#0f172a;color:#94a3b8;min-height:220px"><div id="qr-reader"></div><div id="ph" class="p-8 text-xs" data-i18n="camHint"></div></div>
  <div class="flex gap-2"><button id="b1" class="btn flex-1" onclick="startCam()" data-i18n="camOn"></button><button id="b2" class="btn2 flex-1 hidden" onclick="stopCam()" data-i18n="camOff"></button></div>
  
